@@ -12,13 +12,15 @@ def checkCards():
         powerName = getPowerName(card)
         if(name is not None and powerName is not None and name != powerName):
           inconsistencies_counter += 1
-          data = (f"{card:<{col_size}} | {name:<{col_size}} | {powerName:<{col_size}}")
+          data = (f"{card:<{col_size}} │ {name:<{col_size}} │ {powerName:<{col_size}}")
           location_inconsistencies.append(data)
     
     print(f'INCONSISTENCIES FOUND IN NAMING: {inconsistencies_counter}')
     print()
     if(inconsistencies_counter > 0):
-        print(f"{'ID':<{col_size}}   {'Card Name':<{col_size}}   {'Power Name':<{col_size}}")
+        print("\033[1m", end="") # Bold
+        print(f"{'ID':<{col_size}} │ {'Card Name':<{col_size}} │ {'Power Name':<{col_size}}")
+        print("\033[0m", end="") # Bold Reset
         for inconsistency in location_inconsistencies:
             print(inconsistency)
     
